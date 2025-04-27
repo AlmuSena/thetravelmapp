@@ -92,22 +92,24 @@ class PlacesRepository @Inject constructor(
     suspend fun updatePlace(place: Place, imageUri: Uri?): Result<Unit> {
         return try {
             val userId = auth.currentUser?.uid ?: return Result.failure(Exception("User not logged in"))
-
             //Check if place belongs to current user
             val existingPlace = getPlaceById(place.id)
             if (existingPlace.isSuccess && existingPlace.getOrNull()?.userId != userId) {
                 return Result.failure(Exception("You can only edit your own places"))
             }
 
-            //Upload new image if provided
+            //Upload a new image if provided
             val imageUrl = if (imageUri != null) {
                 uploadImage(imageUri)
             } else {
                 place.imageUrl
             }
 
-            //Update a place with possibly new image Url
-            val updatedPlace = place.copy(imageUrl = imageUrl)
+            //Update a place with possibly new image Url and preserve the userId
+            val updatedPlace = place.copy(
+                imageUrl = imageUrl,
+                userId = existingPlace.getOrNull()?.userId ?:userId
+            )
 
             //Update in Firestore
             placesCollection.document(place.id).update(updatedPlace.toMap()).await()
