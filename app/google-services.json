@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "327587426612",
+    "project_id": "thetravelmapp",
+    "storage_bucket": "thetravelmapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327587426612:android:881843d7b6314b6e713561",
+        "android_client_info": {
+          "package_name": "com.example.thetravelmapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgTsVrpMKUgL8wzEEMs459s7nN35qUohM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
