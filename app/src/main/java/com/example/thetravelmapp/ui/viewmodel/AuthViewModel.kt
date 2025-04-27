@@ -22,6 +22,7 @@ class AuthViewModel @Inject constructor(
     val isUserLoggedIn: Boolean
         get() = authRepository.isUserLoggedIn
 
+    //Function to sign up the user
     fun signUp(email: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
@@ -38,6 +39,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    //Function to sign in the user
     fun signIn(email: String, password: String) {
         viewModelScope.launch {
             _authState.value = AuthState.Loading
@@ -54,6 +56,7 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    //Function to sign out the user
     fun signOut() {
         authRepository.signOut()
         _authState.value = AuthState.SignedOut
