@@ -19,6 +19,7 @@ class AuthRepository @Inject constructor(
     val isUserLoggedIn: Boolean
         get() = auth.currentUser != null
 
+    //Function to check if the user is logged in
     suspend fun signUp(email: String, password: String): Result<FirebaseUser> {
         return try {
             val result = auth.createUserWithEmailAndPassword(email, password).await()
@@ -28,6 +29,7 @@ class AuthRepository @Inject constructor(
         }
     }
 
+    // Function to sign in the user
     suspend fun signIn(email: String, password: String): Result<FirebaseUser> {
         return try {
             val result = auth.signInWithEmailAndPassword(email, password).await()
@@ -37,6 +39,7 @@ class AuthRepository @Inject constructor(
         }
     }
 
+    //Function to sign out the user
     fun signOut() {
         auth.signOut()
     }

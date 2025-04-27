@@ -67,7 +67,7 @@ fun WelcomeScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "TheTravelMapp",
+                    text = "The Travel mAPP",
                     style = MaterialTheme.typography.headlineLarge.copy(
                         fontSize = 42.sp,
                         fontWeight = FontWeight.Bold
